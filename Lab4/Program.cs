@@ -17,6 +17,14 @@ class Program
         Console.WriteLine("Укажите команду: version, run <lab1|lab2|lab3>, set-path -p <путь>");
         app.ShowHelp();
     }
+
+    private void OnUnknownCommand(CommandLineApplication app)
+    {
+        Console.WriteLine("Unknown command. Use one of the following:");
+        Console.WriteLine(" - version: Displays app version and author");
+        Console.WriteLine(" - run: Run a specific lab");
+        Console.WriteLine(" - set-path: Set input/output path");
+    }
 }
 
 [Command(Name = "version", Description = "Показать информацию о программе")]

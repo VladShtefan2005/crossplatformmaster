@@ -1,1 +1,1 @@
-The number of ways to divide a 3x4 chocolate bar: 11
+The number of ways to divide a 3x4 chocolate bar: 11 
