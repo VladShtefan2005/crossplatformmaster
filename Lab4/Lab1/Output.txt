@@ -1,1 +1,0 @@
-Petya's coins: 4, Vasya's coins: 12 
