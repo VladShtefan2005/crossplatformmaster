@@ -27,6 +27,7 @@ class Program
     }
 }
 
+
 [Command(Name = "version", Description = "Показать информацию о программе")]
 class VersionCommand
 {
