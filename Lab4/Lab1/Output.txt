@@ -1,1 +1,1 @@
-Petya's coins: 4, Vasya's coins: 12 
+Petya's coins: 4, Vasya's coins: 12
