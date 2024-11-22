@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h3>Lab Actions</h3>
+
+    @for (int i = 1; i <= 3; i++)
+    {
+        <div>
+            <h4>Lab @i</h4>
+            <button onclick="runLab(@i)">Run Lab @i</button>
+            <button onclick="buildLab(@i)">Build Lab @i</button>
+            <button onclick="testLab(@i)">Test Lab @i</button>
+        </div>
+    }
+</div>
+
+<div id="labResults" class="mt-4">
+    <h3>Lab Results</h3>
+    <pre id="resultsOutput"></pre>
+</div>
+
+@section Scripts {
+    <script>
+        async function runLab(labNumber) {
+            try {
+                document.getElementById('resultsOutput').textContent = 'Running...';
+                const response = await fetch(`/Home/RunLab?labNumber=${labNumber}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.text();
+                document.getElementById('resultsOutput').textContent = result;
+            } catch (error) {
+                document.getElementById('resultsOutput').textContent = 'Error running lab: ' + error;
+            }
+        }
+
+        async function buildLab(labNumber) {
+            try {
+                document.getElementById('resultsOutput').textContent = 'Building...';
+                const response = await fetch(`/Home/BuildLab?labNumber=${labNumber}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.text();
+                document.getElementById('resultsOutput').textContent = result;
+            } catch (error) {
+                document.getElementById('resultsOutput').textContent = 'Error building lab: ' + error;
+            }
+        }
+
+        async function testLab(labNumber) {
+            try {
+                document.getElementById('resultsOutput').textContent = 'Testing...';
+                const response = await fetch(`/Home/TestLab?labNumber=${labNumber}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.text();
+                document.getElementById('resultsOutput').textContent = result;
+            } catch (error) {
+                document.getElementById('resultsOutput').textContent = 'Error testing lab: ' + error;
+            }
+        }
+    </script>
+}
